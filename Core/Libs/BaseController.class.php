@@ -14,15 +14,14 @@ class BaseController
      * @param string $name
      * @param $data
      */
-    public function assign(string $name,$data)
+    public final function assign(string $name,$data)
     {
         $this->_data[$name]=$data;
     }
-
     /**
      * @param string $view
      */
-    public function display(string $view)
+    public final function display(string $view)
     {
         $this->templatePHP($view);
     }
@@ -93,7 +92,7 @@ class BaseController
      * @return array
      */
 
-    public function params():array
+    final function params():array
     {
         $params=array();
         if($_SERVER['REQUEST_METHOD']=='GET')

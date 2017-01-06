@@ -16,7 +16,7 @@ class Log
     private function __construct()
     {
     }
-    public static  function getInstance()
+    public static function getInstance()
     {
         if (!(self::$_instance instanceof self)) {
             self::$_instance = new self();
@@ -27,7 +27,7 @@ class Log
     {
 
     }
-    static public function log($message,$name='log')
+    public static function log($message,$name='log')
     {
         self::$class=FileLog::getInstance();
         self::$class->log($message,$name);
