@@ -77,7 +77,7 @@ class Api
         $xml.='</root>';
         echo $xml;
     }
-    private  function xmlArr(array $data)
+    private  function xmlArr(array $data):string 
     {
         $xml='';
         $attr='';

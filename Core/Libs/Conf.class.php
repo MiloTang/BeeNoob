@@ -56,7 +56,7 @@ class Conf
                     }
                     else
                     {
-                        GetError('次索引不存在' . $name);
+                        GetError('次索引不存在' . $name.__LINE__);
                     }
                 }
                 else
@@ -80,7 +80,7 @@ class Conf
                         }
                         else
                         {
-                            GetError('次索引不存在' . $name);
+                            GetError('次索引不存在' . $name.__LINE__);
                         }
                     }
                     else

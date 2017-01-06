@@ -21,7 +21,8 @@ class Model
     {
 
     }
-    private function __construct(array $dbConf) {
+    private function __construct(array $dbConf)
+    {
         $this->_initDBCConf($dbConf);
         $this->_pdo=$this->_link();
         $this->_setCharset();
