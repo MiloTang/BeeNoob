@@ -9,7 +9,6 @@ namespace Core;
 use Core\Libs\Route;
 class MiloCore
 {
-    private static $_classMap= array();
     private function __construct()
     {
 
@@ -48,7 +47,7 @@ class MiloCore
             mkdir(WEB_PATH.'/Public/Static/JS', 0777, true);
             mkdir(WEB_PATH.'/Public/Static/CSS', 0777, true);
             mkdir(WEB_PATH.'/Public/Static/Images', 0777, true);
-            $string='<?php'.PHP_EOL.'namespace '.APP_NAME.'\\Controller;'.PHP_EOL.'use Core\Libs\BaseController;'.PHP_EOL
+            $string='<?php'.PHP_EOL.'namespace '.WEB_NAME.'\\Controller;'.PHP_EOL.'use Core\Libs\BaseController;'.PHP_EOL
             .'class IndexController extends BaseController'.PHP_EOL.'{'.PHP_EOL.'   public function index()'.PHP_EOL.
             '   {'.PHP_EOL.'      $this->display(\'index.html\');'.PHP_EOL.'   }'.PHP_EOL.'}';
             file_put_contents(WEB_PATH.'Controller'.'/'.'IndexController.class.php',$string);
@@ -103,7 +102,6 @@ class MiloCore
         defined('CACHE_PHP') or define('CACHE_PHP',false);
         defined('CACHE_HTML') or define('CACHE_HTML',false);
         defined('CACHE_TIME') or define('CACHE_TIME',200);
-        defined('SLD') or define('SLD',NULL);
         defined('CORE_PATH') or define('CORE_PATH',ROOT_DIR.'/Core/');
         define('VERSION','1.0.0');
         define('MAGIC_GPC',ini_get('magic_quotes_gpc')?true:false);
@@ -113,10 +111,12 @@ class MiloCore
         if (IS_SLD)
         {
             define('WEB_PATH',ROOT_DIR.'/'.SLD.'/');
+            defined('WEB_NAME') or define('WEB_NAME',SLD);
         }
         else
         {
             define('WEB_PATH',APP_PATH);
+            defined('WEB_NAME') or define('WEB_NAME',APP_NAME);
         }
     }
     private static function _sld()
@@ -124,10 +124,9 @@ class MiloCore
         $SLD=explode('.',$_SERVER['HTTP_HOST'])[0];
         if($SLD!='localhost'&&$SLD!='127')
         {
-            $conf=require_once CORE_PATH.'Common/Config/Config.php';
-            if(isset($conf['SLD'])&&$conf['SLD']!=null)
+            $conf=require_once CORE_PATH.'Common/Config/SLDConf.php';
+            if(isset($conf)&&$conf!=null)
             {
-                $conf=$conf['SLD'];
                 if (is_array($conf))
                 {
                     foreach ($conf as $key => $value)
@@ -135,18 +134,12 @@ class MiloCore
                         if (strtolower($SLD)==strtolower($value))
                         {
                             defined('IS_SLD') or define('IS_SLD',true);
+                            defined('SLD') or define('SLD',$value);
+                            break;
                         }
                     }
                 }
-                else
-                {
-                    if (strtolower($SLD)==strtolower($conf))
-                    {
-                        defined('IS_SLD') or define('IS_SLD',true);
-                    }
-                }
             }
-
         }
         defined('IS_SLD') or define('IS_SLD',false);
     }
