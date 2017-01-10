@@ -7,5 +7,5 @@
  */
 defined('CORE_PATH') or exit();
 return array(
-    'Admin'
+    
 );
