@@ -22,6 +22,7 @@ class MiloCore
     {
         if(version_compare(PHP_VERSION,'7.0.0','<'))die('require PHP > 7.0.0 !');
         self::_define();
+        self::_sld();
         self::_path();
         DEBUG?ini_set('display_errors','On'):ini_set('display_errors','Off');
         date_default_timezone_set('Asia/Chongqing');
@@ -53,14 +54,14 @@ class MiloCore
             file_put_contents(WEB_PATH.'Controller'.'/'.'IndexController.class.php',$string);
             mkdir(WEB_PATH.'Common', 0777, true);
             mkdir(WEB_PATH.'Common'.'/Config', 0777, true);
-            $string='<?php'.PHP_EOL.'return array('.PHP_EOL.');';
-            file_put_contents(WEB_PATH.'Common'.'/Config'.'/'.'Config.php',$string);
+            mkdir(WEB_PATH.'Common'.'/Log', 0777, true);
+            file_put_contents(WEB_PATH.'Common/Config/Config.php',file_get_contents(CORE_PATH.'Common/Config/Config.php'));
         }
     }
     public static function run()
     {
+        self::_autoload();
         self::_init();
-        spl_autoload_register('self::_load');
         $route = Route::getInstance();
         $control=$route->getControl();
         $action=$route->getAction();
@@ -83,29 +84,11 @@ class MiloCore
             GetError($control.' 控制器不存在');
         }
     }
-    private static function _load(string $class) : bool
+    private static function _autoload()
     {
-        if(isset($_classMap[$class]))
-        {
-            return true;
-        }
-        else
-        {
-			$class=ROOT_DIR.'/'.$class;
-			$class=str_replace('\\','/',$class);
-            $file=$class.EXT;
-            if(is_file($file))
-            {
-                require_once $file.'';
-                self::$_classMap[$class]=$class;
-                return true;
-            }
-            else
-            {
-                GetError('文件不存在 '.$file);
-            }
-            return false;
-        }
+        spl_autoload_extensions('.class.php');
+        set_include_path(get_include_path().PATH_SEPARATOR.'');
+        spl_autoload_register();
     }
     private static function _define()
     {
@@ -120,30 +103,51 @@ class MiloCore
         defined('CACHE_PHP') or define('CACHE_PHP',false);
         defined('CACHE_HTML') or define('CACHE_HTML',false);
         defined('CACHE_TIME') or define('CACHE_TIME',200);
-        defined('ADMIN_SLD_NAME') or define('ADMIN_SLD_NAME',NULL);
+        defined('SLD') or define('SLD',NULL);
         defined('CORE_PATH') or define('CORE_PATH',ROOT_DIR.'/Core/');
         define('VERSION','1.0.0');
         define('MAGIC_GPC',ini_get('magic_quotes_gpc')?true:false);
-        $SLD=explode('.',$_SERVER['HTTP_HOST'])[0];
-        if($SLD!='localhost'&&$SLD!='127'&&strtolower($SLD)==strtolower(ADMIN_SLD_NAME)&&ADMIN_SLD_NAME!=NULL)
-        {
-            defined('IS_ADMIN') or define('IS_ADMIN',true);
-        }
-        else
-        {
-            defined('IS_ADMIN') or define('IS_ADMIN',false);
-        }
-
     }
     private static function _path()
     {
-        if (IS_ADMIN)
+        if (IS_SLD)
         {
-            define('WEB_PATH',ROOT_DIR.'/'.ADMIN_SLD_NAME.'/');
+            define('WEB_PATH',ROOT_DIR.'/'.SLD.'/');
         }
         else
         {
             define('WEB_PATH',APP_PATH);
         }
+    }
+    private static function _sld()
+    {
+        $SLD=explode('.',$_SERVER['HTTP_HOST'])[0];
+        if($SLD!='localhost'&&$SLD!='127')
+        {
+            $conf=require_once CORE_PATH.'Common/Config/Config.php';
+            if(isset($conf['SLD'])&&$conf['SLD']!=null)
+            {
+                $conf=$conf['SLD'];
+                if (is_array($conf))
+                {
+                    foreach ($conf as $key => $value)
+                    {
+                        if (strtolower($SLD)==strtolower($value))
+                        {
+                            defined('IS_SLD') or define('IS_SLD',true);
+                        }
+                    }
+                }
+                else
+                {
+                    if (strtolower($SLD)==strtolower($conf))
+                    {
+                        defined('IS_SLD') or define('IS_SLD',true);
+                    }
+                }
+            }
+
+        }
+        defined('IS_SLD') or define('IS_SLD',false);
     }
 }

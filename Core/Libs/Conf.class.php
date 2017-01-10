@@ -26,71 +26,31 @@ class Conf
     {
 
     }
-    static public function conf(string $name,string $index=null):array
+    static public function conf():array
     {
-        if (isset(self::$_conf[$name]))
+        if (isset(self::$_conf['conf']))
         {
-            if ($index!= null)
-            {
-                if(isset(self::$_conf[$name][$index]))
-                {
-                    return self::$_conf[$name][$index];
-                }
-            }
-            else
-            {
-                return self::$_conf[$name];
-            }
+            return self::$_conf['conf'];
         }
         else
         {
-            $file = WEB_PATH . '/Common/Config/' . $name . '.php';
+            $file = WEB_PATH . 'Common/Config/Config.php';
             if (is_file($file)) {
                 $conf = require_once $file . '';
-                self::$_conf[$name] = $conf;
-                if ($index !== null)
-                {
-                    if(isset($conf[$index]))
-                    {
-                        return $conf[$index];
-                    }
-                    else
-                    {
-                        GetError('次索引不存在' . $name.__LINE__);
-                    }
-                }
-                else
-                {
-                    return $conf;
-                }
-
+                self::$_conf['conf'] = $conf;
+                return self::$_conf['conf'];
             }
             else
             {
-                $file = CORE_PATH . '/Common/Config/' . $name . '.php';
-                if (is_file($file))
-                {
+                $file = CORE_PATH . 'Common/Config/Config.php';
+                if (is_file($file)) {
                     $conf = require_once $file . '';
-                    self::$_conf[$name] = $conf;
-                    if ($index !== null)
-                    {
-                        if(isset($conf[$index]))
-                        {
-                            return $conf[$index];
-                        }
-                        else
-                        {
-                            GetError('次索引不存在' . $name.__LINE__);
-                        }
-                    }
-                    else
-                    {
-                        return $conf;
-                    }
+                    self::$_conf['conf'] = $conf;
+                    return self::$_conf['conf'];
                 }
                 else
                 {
-                    GetError('配置文件不存在' . $name);
+                    GetError('配置文件不存在' . 'conf');
                 }
             }
         }

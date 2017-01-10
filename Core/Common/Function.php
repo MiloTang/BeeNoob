@@ -13,17 +13,17 @@ function Conf()
 {
     return \Core\libs\Conf::getInstance();
 }
-function Model($conf)
+function Model()
 {
-    return \Core\libs\Model::getInstance($conf);
+    return \Core\libs\Model::getInstance();
 }
 function Route()
 {
     return \Core\libs\Route::getInstance();
 }
-function RandomImage()
+function VerifyCode()
 {
-    return \Core\Libs\RandomImage::getInstance();
+    return \Core\Libs\VerifyCode::getInstance();
 }
 function Template()
 {

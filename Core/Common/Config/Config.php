@@ -11,7 +11,8 @@ return array(
         'type'=>'json'
     ),
     'LOG'=>array(
-        'type'=>'file'
+        'type'=>'file',
+        'name'=>'ErrorLog'
     ),
     'DB'=>array(
         'Mysql'=>array(
@@ -35,4 +36,9 @@ return array(
 
         ),
     ),
+    'EXT'=>array(
+    ),
+    'SLD'=>array(
+
+    )
 );

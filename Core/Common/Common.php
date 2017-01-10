@@ -71,15 +71,22 @@ function Encrypt($password)
 {
     return md5(sha1(crypt($password,'MiloCore')));
 }
-function CreateEmptyIndexHtml(string $dir)
+function CreateEmptyIndexHtml(string $dir=null)
 {
+    if ($dir=null)
+    {
+        $dir=getcwd();
+    }
     $it=new  \RecursiveDirectoryIterator($dir);
     $it->rewind();
     while ($it->valid())
     {
         if ($it->hasChildren()&&substr($it->getFilename(),0,1)!='.')
         {
-            file_put_contents($it->getRealPath().'/index.html','');
+            if (!file_exists($it->getRealPath().'/index.html'))
+            {
+                file_put_contents($it->getRealPath().'/index.html','');
+            }
             CreateEmptyIndexHtml($it->getRealPath());
         }
         $it->next();
