@@ -5,19 +5,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="BeeNoob">
-    <meta name="author" content="BeeNoob">
     <link rel="icon" type="image/png" href="/favicon.png">
-    <title>BeeNoob</title>
+    <title>Image</title>
+    <style>
+        .in{
+            background-color: brown;
+        }
+    </style>
 </head>
 <body>
 <div style="text-align: center">
-<form action="/index/upload/" method="post" enctype="multipart/form-data">
-    <input type="file" name="file"><br/>
-    <input type="hidden" name="token" value=<?php echo $token; ?>>
-    <input type="submit">
-</form>
-
+    <form action="upload.php" method="post" enctype="multipart/form-data" >
+        <input type="file" name="file" ><br/>
+        <input  class="in" type="submit" value="上传">
+    </form>
 </div>
 </body>
 </html>

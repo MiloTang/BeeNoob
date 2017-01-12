@@ -11,22 +11,18 @@ class MiloCore
 {
     private function __construct()
     {
-
     }
     private function __clone()
     {
-
     }
     private static function _init()
     {
         if(version_compare(PHP_VERSION,'7.0.0','<'))die('require PHP > 7.0.0 !');
+        DEBUG?ini_set('display_errors','On'):ini_set('display_errors','Off');
+        session_start();
         self::_define();
         self::_sld();
         self::_path();
-        DEBUG?ini_set('display_errors','On'):ini_set('display_errors','Off');
-        date_default_timezone_set('Asia/Chongqing');
-        $GLOBALS['StartTime'] = microtime(TRUE);
-        define('MEMORY_LIMIT_ON',function_exists('memory_get_usage'));
         require CORE_PATH.'Common/Function.php'.'';
         require CORE_PATH.'Common/Common.php'.'';
         if(MEMORY_LIMIT_ON)
@@ -44,6 +40,8 @@ class MiloCore
             mkdir(WEB_PATH.'/View'.'/Templates', 0777, true);
             file_put_contents(WEB_PATH.'/View'.'/Templates'.'/'.'index.html',file_get_contents(CORE_PATH.'/'.'index.html'));
             mkdir(WEB_PATH.'/Controller', 0777, true);
+            mkdir(WEB_PATH.'/Public/Upload/Image', 0777, true);
+            mkdir(WEB_PATH.'/Public/Upload/Text', 0777, true);
             mkdir(WEB_PATH.'/Public/Static/JS', 0777, true);
             mkdir(WEB_PATH.'/Public/Static/CSS', 0777, true);
             mkdir(WEB_PATH.'/Public/Static/Images', 0777, true);
@@ -59,8 +57,8 @@ class MiloCore
     }
     public static function run()
     {
-        self::_autoload();
         self::_init();
+        self::_autoload();
         $route = Route::getInstance();
         $control=$route->getControl();
         $action=$route->getAction();
@@ -91,6 +89,9 @@ class MiloCore
     }
     private static function _define()
     {
+        date_default_timezone_set('Asia/Chongqing');
+        $GLOBALS['StartTime'] = microtime(TRUE);
+        define('MEMORY_LIMIT_ON',function_exists('memory_get_usage'));
         defined('ROOT_DIR') or define('ROOT_DIR',str_replace('\\','/',getcwd()));
         defined('APP_NAME') or define('APP_NAME','Home');
         defined('APP_PATH') or define('APP_PATH',ROOT_DIR.'/'.APP_NAME.'/');
@@ -124,7 +125,7 @@ class MiloCore
         $SLD=explode('.',$_SERVER['HTTP_HOST'])[0];
         if($SLD!='localhost'&&$SLD!='127')
         {
-            $conf=require_once CORE_PATH.'Common/Config/SLDConf.php';
+            $conf=require_once CORE_PATH.'Common/Config/SLDConf.php'.'';
             if(isset($conf)&&$conf!=null)
             {
                 if (is_array($conf))

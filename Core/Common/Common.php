@@ -73,7 +73,7 @@ function Encrypt($password)
 }
 function CreateEmptyIndexHtml(string $dir=null)
 {
-    if ($dir=null)
+    if ($dir==null)
     {
         $dir=getcwd();
     }
@@ -112,4 +112,23 @@ function UnicodeDecode($name)
     $json = '{"str":"'.$name.'"}';
     $arr = json_decode($json,true);
     return empty($arr)?'':$arr['str'];
+}
+function SetToken()
+{
+    $token=md5(microtime(true));
+    $_SESSION['token']=$token;
+    echo $_SESSION['token'].'         ';
+    return $token;
+}
+function CheckToken()
+{
+    if(isset($_POST['token'])&&isset($_SESSION['token']))
+    {
+        if ($_POST['token']==$_SESSION['token'])
+        {
+            unset($_SESSION['token']);
+            return true;
+        }
+    }
+    return false;
 }

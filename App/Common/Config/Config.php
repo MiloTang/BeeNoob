@@ -40,5 +40,14 @@ return array(
     ),
     'SLD'=>array(
 
+    ),
+    'UP_TYPE'=>array(
+       'type'=>array(
+           'gif',
+           'jpeg',
+           'jpg',
+           'png',
+           'txt'
+       )
     )
 );

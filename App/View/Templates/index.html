@@ -11,18 +11,13 @@
     <title>BeeNoob</title>
 </head>
 <body>
-<pre style="text-align: center">
-<a href="http://www.beenoob.com" style="text-decoration: none;color:brown;font-size: 1rem;">
-    $$$$$$$$$  $$$$$$$$  $$$$$$$$         $        $   $$$$$$$$$$   $$$$$$$$$  $$$$$$$$$
-    $       $  $         $                $ $      $   $        $   $       $  $       $
-    $       $  $         $                $  $     $   $        $   $       $  $       $
-    $       $  $         $                $   $    $   $        $   $       $  $       $
-    $$$$$$$$$  $$$$$$$$  $$$$$$$$         $    $   $   $        $   $       $  $$$$$$$$$
-    $       $  $         $                $     $  $   $        $   $       $  $       $
-    $       $  $         $                $      $ $   $        $   $       $  $       $
-    $       $  $         $                $        $   $        $   $       $  $       $
-    $$$$$$$$$  $$$$$$$$  $$$$$$$$         $        $   $$$$$$$$$$   $$$$$$$$$  $$$$$$$$$
-</a>
-</pre>
+<div style="text-align: center">
+<form action="/index/upload/" method="post" enctype="multipart/form-data">
+    <input type="file" name="file"><br/>
+    <input type="hidden" name="token" value={$token}>
+    <input type="submit">
+</form>
+
+</div>
 </body>
 </html>

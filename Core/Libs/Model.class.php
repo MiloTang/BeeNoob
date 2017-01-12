@@ -74,7 +74,7 @@ class Model
     {
         if($dbConf==null)
         {
-          $dbConf=isset(Conf::getInstance()->conf('Config')['DB'])?Conf::getInstance()->conf('Config')['DB']:null;
+          $dbConf=isset(Conf::getInstance()->conf()['DB'])?Conf::getInstance()->conf()['DB']:null;
         }
         if (!(self::$_instance instanceof static))
         {

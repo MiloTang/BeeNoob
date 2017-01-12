@@ -11,7 +11,7 @@ use Core\libs\drive\log\FileLog;
 
 class Log
 {
-    private static $class;
+    private static $_class;
     private static $_instance;
     private function __construct()
     {
@@ -29,7 +29,7 @@ class Log
     }
     public static function log($message,$name='log')
     {
-        self::$class=FileLog::getInstance();
-        self::$class->log($message,$name);
+        self::$_class=FileLog::getInstance();
+        self::$_class->log($message,$name);
     }
 }
