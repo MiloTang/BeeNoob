@@ -7,17 +7,27 @@ class IndexController extends BaseController
 {
    public function index()
    {
+      PrintFm($_SERVER);
+      exit();
       $this->assign('token',SetToken());
       $this->display('index.html');
    }
 
    public function upload()
    {
-      $up=UploadFile::getInstance();
-      if ($up->upload())
+      if(CheckToken())
       {
-         echo $up->getFilename();
+         $up=UploadFile::getInstance();
+         if ($up->upload())
+         {
+            echo $up->getFilename();
+         }
       }
+      else
+      {
+         GetError('请勿重复提交');
+      }
+
    }
 
 

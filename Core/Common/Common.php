@@ -61,9 +61,8 @@ function GetError(string $string)
     else
     {
         $log=\Core\libs\Log::getInstance();
-        echo $string;
-        $log->log($string);
-        exit('出现一些错误');
+        $log->log('浏览器信息: '.$_SERVER['HTTP_USER_AGENT'].' IP信息:'.$_SERVER['REMOTE_ADDR'].' 错误提示:'.$string);
+        exit('<h3 style="text-align: center">站长正在加紧处理请稍候再试</h3>');
     }
 }
 function Encrypt($password)

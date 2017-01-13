@@ -32,21 +32,22 @@ class UploadFile
             switch($_FILES['file']['error'])
             {
                 case 1:
-                    GetError('上传的文件超过服务器限制');
+                    $msg='上传的文件超过服务器限制';
                     break;
                 case 3:
-                    GetError('文件部分上传');
+                    $msg='文件部分上传';
                     break;
                 case 4:
-                    GetError('没有选择上传文件');
+                    $msg='没有选择上传文件';
                     break;
                 case 7:
                 case 8:
-                    GetError('系统错误');
+                    $msg='系统错误';
                     break;
                 default:
-                    GetError('其他错误');
+                    $msg='其他错误';
             }
+            GetError($msg);
         }
         else
         {
