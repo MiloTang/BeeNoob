@@ -32,8 +32,6 @@ return array(
 
         ),
     ),
-    'EXT'=>array(
-    ),
     'SLD'=>array(
 
     ),

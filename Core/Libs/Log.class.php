@@ -8,7 +8,6 @@
 namespace Core\libs;
 defined('CORE_PATH') or exit();
 use Core\libs\drive\log\FileLog;
-use Core\libs\drive\log\Mysql;
 use Core\libs\drive\log\MysqlLog;
 
 class Log

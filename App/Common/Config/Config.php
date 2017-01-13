@@ -32,11 +32,6 @@ return array(
 
         ),
     ),
-    'EXT'=>array(
-    ),
-    'SLD'=>array(
-
-    ),
     'UP_TYPE'=>array(
        'Image'=>array(
            'gif',
