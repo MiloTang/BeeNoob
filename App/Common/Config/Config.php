@@ -10,10 +10,6 @@ return array(
     'API'=>array(
         'type'=>'json'
     ),
-    'LOG'=>array(
-        'type'=>'file',
-        'name'=>'ErrorLog'
-    ),
     'DB'=>array(
         'Mysql'=>array(
             'dsn'=>'mysql:host=localhost;',
@@ -42,12 +38,19 @@ return array(
 
     ),
     'UP_TYPE'=>array(
-       'type'=>array(
+       'Image'=>array(
            'gif',
            'jpeg',
            'jpg',
-           'png',
-           'txt'
+           'png'
+       ),
+       'Text'=>array(
+        'txt',
+        'Log'
+       ),
+       'Exe'=>array(
+           'bat',
+           'exe'
        )
     )
 );

@@ -5,11 +5,26 @@
  * Date: 11/1/2016
  * Time: 6:33 PM
  */
-namespace Core\libs\drive\log;
-class Mysql
+namespace Core\libs\Drive\Log;
+class MysqlLog implements Log
 {
-    public function __construct()
+    private static $_instance;
+    private function __construct()
     {
-        
+    }
+    public static  function getInstance()
+    {
+        if (!(self::$_instance instanceof self)) {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
+    private function __clone()
+    {
+
+    }
+    public function log($message,$name)
+    {
+
     }
 }

@@ -63,8 +63,7 @@ function GetError(string $string)
         $log=\Core\libs\Log::getInstance();
         echo $string;
         $log->log($string);
-        $url='http://'.$_SERVER['SERVER_NAME'].'/'.InUrl('index/not');
-        JumpUrl($url);
+        exit('出现一些错误');
     }
 }
 function Encrypt($password)
@@ -117,7 +116,6 @@ function SetToken()
 {
     $token=md5(microtime(true));
     $_SESSION['token']=$token;
-    echo $_SESSION['token'].'         ';
     return $token;
 }
 function CheckToken()

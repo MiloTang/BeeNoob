@@ -10,10 +10,6 @@ return array(
     'API'=>array(
         'type'=>'json'
     ),
-    'LOG'=>array(
-        'type'=>'file',
-        'name'=>'ErrorLog'
-    ),
     'DB'=>array(
         'Mysql'=>array(
             'dsn'=>'mysql:host=localhost;',

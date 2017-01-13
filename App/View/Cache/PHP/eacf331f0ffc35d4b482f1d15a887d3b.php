@@ -9,13 +9,14 @@
     <meta name="author" content="BeeNoob">
     <link rel="icon" type="image/png" href="/favicon.png">
     <title>BeeNoob</title>
+
 </head>
 <body>
 <div style="text-align: center">
 <form action="/index/upload/" method="post" enctype="multipart/form-data">
-    <input type="file" name="file"><br/>
+    <input type="file" name="file" value="file"><br/>
     <input type="hidden" name="token" value=<?php echo $token; ?>>
-    <input type="submit">
+    <input type="submit" value="submit">
 </form>
 
 </div>

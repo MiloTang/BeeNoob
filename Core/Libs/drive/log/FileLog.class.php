@@ -5,8 +5,8 @@
  * Date: 11/1/2016
  * Time: 6:33 PM
  */
-namespace Core\libs\drive\log;
-class FileLog
+namespace Core\Libs\Drive\Log;
+class FileLog implements Log
 {
     private $path;
     private static $_instance;
@@ -40,7 +40,6 @@ class FileLog
         {
             $totalMemory=0;
         }
-       return file_put_contents($this->path.date('Ymd').$name,date('Y-m-d H:i:s') .' 耗时: '.$totalTime.' 耗内存: '.$totalMemory.'  '.$message.PHP_EOL,FILE_APPEND);
-
+       file_put_contents($this->path.date('Ymd').$name,date('Y-m-d H:i:s') .' 耗时: '.$totalTime.' 耗内存: '.$totalMemory.'  '.$message.PHP_EOL,FILE_APPEND);
     }
 }

@@ -24,65 +24,93 @@ class UploadFile
     private function __clone()
     {
     }
-    public function upload(string $type='image',int $size=102400)
+    public function upload(int $size=102400)
     {
-        $conf=Conf::getInstance()->conf();
-        $types=isset($conf['UP_TYPE']['type'])?$conf['UP_TYPE']['type']:null;
-        $temp = explode('.', $_FILES['file']['name']);
-        $ext=end($temp);
-        if (($_FILES['file']['size'] < $size) && in_array($ext,$types))
+
+        if ($_FILES['file']['error'] > 0)
         {
-            if ($_FILES['file']['error'] > 0)
+            switch($_FILES['file']['error'])
             {
-                echo '错误：: ' . $_FILES['file']['error'] . '<br>';
+                case 1:
+                    GetError('上传的文件超过服务器限制');
+                    break;
+                case 3:
+                    GetError('文件部分上传');
+                    break;
+                case 4:
+                    GetError('没有选择上传文件');
+                    break;
+                case 7:
+                case 8:
+                    GetError('系统错误');
+                    break;
+                default:
+                    GetError('其他错误');
+            }
+        }
+        else
+        {
+            $conf=Conf::getInstance()->conf();
+            $ext=strtolower(pathinfo($_FILES['file']['name'],PATHINFO_EXTENSION));
+            //$ext = strtolower(end(explode('.', $_FILES['file']['name'])));
+            $allowed=false;
+            $type='';
+            foreach ($conf['UP_TYPE'] as $item=>$value)
+            {
+                $types[$item]=$conf['UP_TYPE'][$item];
+                if (in_array($ext,$types[$item]))
+                {
+                    $allowed=true;
+                    $type=$item;
+                }
+            }
+            if ($_FILES['file']['size'] > $size)
+            {
+                GetError('文件上传过大');
+            }
+            if (!$allowed)
+            {
+                GetError('不允许此格式');
+            }
+            if (!is_uploaded_file($_FILES['file']['tmp_name']))
+            {
+                GetError('不是POST方式传递过来的');
+            }
+            $dir=WEB_PATH.'Public/Upload/'.$type;
+            $filename=md5(microtime(true)).'.'.$ext;
+            if (!is_dir($dir))
+            {
+                mkdir($dir, 0777, true);
+            }
+            if (file_exists($dir.'/'.$filename))
+            {
+                GetError($_FILES['file']['name'] . ' 文件已经存在。 ');
             }
             else
             {
-                if ($type=='image')
+                if (move_uploaded_file($_FILES['file']['tmp_name'], $dir.'/'.$filename))
                 {
-                    if (file_exists(WEB_PATH.'Public/Upload/Image/'.$_FILES['file']['name']))
-                    {
-                        echo $_FILES['file']['name'] . ' 文件已经存在。 ';
-                    }
-                    else
-                    {
-                        move_uploaded_file($_FILES['file']['tmp_name'], WEB_PATH.'Public/Upload/Image/'.$_FILES['file']['name']);
-                        self::$_filename='/'.WEB_NAME.'/Public/Upload/Image/'.$_FILES['file']['name'];
-                    }
-                }
-                elseif($type=='text')
-                {
-                    if (file_exists(WEB_PATH.'Public/Upload/Text/'.$_FILES['file']['name']))
-                    {
-                        echo $_FILES['file']['name'] . ' 文件已经存在。 ';
-                    }
-                    else
-                    {
-                        move_uploaded_file($_FILES['file']['tmp_name'], WEB_PATH.'Public/Upload/Text/'.$_FILES['file']['name']);
-                        self::$_filename='/'.WEB_NAME.'/Public/Upload/Image/'.$_FILES['file']['name'];
-                    }
+                    self::$_filename=WEB_NAME.'/Public/Upload/'.$type.'/'.$filename;
+                    return true;
                 }
                 else
                 {
-                    PrintFm('文件类型有误');
+                    GetError('上传失败');
                 }
+
+
             }
+
         }
-        else
-        {
-            PrintFm('文件格式有误或者尺寸太大');
-        }
+        return false;
     }
 
+    /**
+     * @return mixed
+     * 当upload 返回true时　可以调用
+     */
     public function getFilename()
     {
-        if (self::$_filename!=null)
-        {
-            return self::$_filename;
-        }
-        else
-        {
-            exit('文件名不存在');
-        }
+        return self::$_filename;
     }
 }

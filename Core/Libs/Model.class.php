@@ -194,7 +194,7 @@ class Model
         }
         else
         {
-            exit('没有开启事务');
+            GetError('没有开启事务');
         }
     }
     public function rollBackTrans()

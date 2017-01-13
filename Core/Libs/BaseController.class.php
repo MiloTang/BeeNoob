@@ -83,7 +83,7 @@ class BaseController
             }
             else
             {
-                PrintFm($view.' 模板不存在'.__FUNCTION__);
+                GetError($view.' 模板不存在'.__FUNCTION__);
             }
         }
     }

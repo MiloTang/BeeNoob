@@ -8,6 +8,8 @@
 namespace Core\libs;
 defined('CORE_PATH') or exit();
 use Core\libs\drive\log\FileLog;
+use Core\libs\drive\log\Mysql;
+use Core\libs\drive\log\MysqlLog;
 
 class Log
 {
@@ -27,9 +29,20 @@ class Log
     {
 
     }
-    public static function log($message,$name='log')
+    public static function log($message,string $type='file',string $name='Log')
     {
-        self::$_class=FileLog::getInstance();
+        if ($type=='file')
+        {
+            self::$_class=FileLog::getInstance();
+        }
+        elseif($type='Mysql')
+        {
+            self::$_class=MysqlLog::getInstance();
+        }
+        else
+        {
+            GetError('不支持'.$type.'类log');
+        }
         self::$_class->log($message,$name);
     }
 }
