@@ -7,8 +7,6 @@ class IndexController extends BaseController
 {
    public function index()
    {
-      PrintFm($_SERVER);
-      exit();
       $this->assign('token',SetToken());
       $this->display('index.html');
    }

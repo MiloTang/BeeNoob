@@ -41,7 +41,10 @@ return array(
        ),
        'Text'=>array(
         'txt',
-        'Log'
+        'Log',
+        'doc',
+        'docx',
+        'zip'
        ),
        'Exe'=>array(
            'bat',
