@@ -16,7 +16,7 @@ class IndexController extends BaseController
       if(CheckToken())
       {
          $up=UploadFile::getInstance();
-         if ($up->upload())
+         if ($up->uploads())
          {
             echo $up->getFilename();
          }

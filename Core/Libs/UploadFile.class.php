@@ -26,12 +26,22 @@ class UploadFile
     private function __clone()
     {
     }
-
-    public function upload(int $size = 102400)
+    public function uploads(int $size=102400)
     {
+        foreach ($_FILES as $fileInfo)
+        {
+            if(isset($fileInfo['name']))
+            {
 
-        if ($_FILES['file']['error'] > 0) {
-            switch ($_FILES['file']['error']) {
+            }
+            $this->upload($fileInfo,$size);
+        }
+
+    }
+    private function upload(array $fileInfo,int $size = 102400)
+    {
+        if ($fileInfo['error'] > 0) {
+            switch ($fileInfo['error']) {
                 case 1:
                     $msg = '上传的文件超过服务器限制';
                     break;
@@ -48,18 +58,18 @@ class UploadFile
                 default:
                     $msg = '其他错误';
             }
-            GetError($msg);
+            GetError($fileInfo['name'].$msg);
         } else {
             $conf = Conf::getInstance()->conf();
-            $ext = strtolower(pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION));
-            //$ext = strtolower(end(explode('.', $_FILES['file']['name'])));
+            $ext = strtolower(pathinfo($fileInfo['name'], PATHINFO_EXTENSION));
+            //$ext = strtolower(end(explode('.', $fileInfo['name'])));
             $allowed = false;
             $type = '';
             if ($ext!='txt')
             {
-                $file = fopen($_FILES['file']['tmp_name'], 'rb');
+                $file = fopen($fileInfo['tmp_name'], 'rb');
                 if (!$file) {
-                    GetError('读取文件失败');
+                    GetError($fileInfo['name'].'读取文件失败');
                 }
                 $bin = fread($file, 15);
                 fclose($file);
@@ -78,7 +88,7 @@ class UploadFile
                 }
                 if (!$real)
                 {
-                    GetError($realType.'此类型文件禁止上传:');
+                    GetError($fileInfo['name'].'文件禁止上传其真实格式:'.$realType);
                 }
             }
             foreach ($conf['UP_TYPE'] as $item => $value) {
@@ -88,14 +98,15 @@ class UploadFile
                     $type = $item;
                 }
             }
-            if ($_FILES['file']['size'] > $size) {
-                GetError('文件上传过大');
+            if ($fileInfo['size'] > $size) {
+                GetError($fileInfo['name'].'文件上传过大');
             }
             if (!$allowed) {
-                GetError('不允许此格式');
+                GetError($fileInfo['name'].'不允许此格式');
             }
-            if (!is_uploaded_file($_FILES['file']['tmp_name'])) {
-                GetError('不是POST方式传递过来的');
+            
+            if (!is_uploaded_file($fileInfo['tmp_name'])) {
+                GetError($fileInfo['name'].'不是POST方式传递过来的');
             }
             $dir = WEB_PATH . 'Public/Upload/' . $type;
             $filename = md5(uniqid(microtime(true), true)) . '.' . $ext;
@@ -103,17 +114,18 @@ class UploadFile
                 mkdir($dir, 0777, true);
             }
             if (file_exists($dir . '/' . $filename)) {
-                GetError($_FILES['file']['name'] . ' 文件已经存在。 ');
+                GetError($fileInfo['name'] . ' 文件已经存在。 ');
             } else {
-                if (@move_uploaded_file($_FILES['file']['tmp_name'], $dir . '/' . $filename)) {
+                if (@move_uploaded_file($fileInfo['tmp_name'], $dir . '/' . $filename)) {
                     self::$_filename = WEB_NAME . '/Public/Upload/' . $type . '/' . $filename;
+                    GetError($fileInfo['name'].'上传成功');
                     return true;
                 } else {
-                    GetError('上传失败');
+                    GetError($fileInfo['name'].'上传失败');
+                    
                 }
 
             }
-
         }
         return false;
     }
@@ -127,7 +139,7 @@ class UploadFile
         return self::$_filename;
     }
 
-    private static function _realTypeList()
+    private function _realTypeList()
     {
         return array(array('FFD8FFE000', 'jpg'),
             array('89504E47', 'png'),
