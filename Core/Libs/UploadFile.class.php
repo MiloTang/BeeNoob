@@ -77,7 +77,7 @@ class UploadFile
                 GetError('不是POST方式传递过来的');
             }
             $dir=WEB_PATH.'Public/Upload/'.$type;
-            $filename=md5(microtime(true)).'.'.$ext;
+            $filename=md5(uniqid(microtime(true),true)).'.'.$ext;
             if (!is_dir($dir))
             {
                 mkdir($dir, 0777, true);

@@ -2,16 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="280edb68-da25-44bc-83a2-4084e516bc2d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Common/Config/Config.php" afterPath="$PROJECT_DIR$/App/Common/Config/Config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/App/Controller/IndexController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/View/Cache/PHP/eacf331f0ffc35d4b482f1d15a887d3b.php" afterPath="$PROJECT_DIR$/App/View/Cache/PHP/eacf331f0ffc35d4b482f1d15a887d3b.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/View/Templates/index.html" afterPath="$PROJECT_DIR$/App/View/Templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core/Common/Common.php" afterPath="$PROJECT_DIR$/Core/Common/Common.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core/Common/Config/Config.php" afterPath="$PROJECT_DIR$/Core/Common/Config/Config.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core/Libs/BaseController.class.php" afterPath="$PROJECT_DIR$/Core/Libs/BaseController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core/Libs/Log.class.php" afterPath="$PROJECT_DIR$/Core/Libs/Log.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core/Libs/Model.class.php" afterPath="$PROJECT_DIR$/Core/Libs/Model.class.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core/Libs/UploadFile.class.php" afterPath="$PROJECT_DIR$/Core/Libs/UploadFile.class.php" />
     </list>
     <ignored path="Onnoob.iws" />
@@ -34,108 +24,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MiloCore.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Core/MiloCore.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="667">
-              <caret line="34" column="49" selection-start-line="34" selection-start-column="12" selection-end-line="34" selection-end-column="49" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Log.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Core/Libs/Log.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="43" column="38" selection-start-line="43" selection-start-column="38" selection-end-line="43" selection-end-column="38" />
-              <folding>
-                <element signature="e#141#173#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Conf.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Core/Libs/Conf.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="35">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseController.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Core/Libs/BaseController.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2716">
-              <caret line="90" column="7" selection-start-line="90" selection-start-column="7" selection-end-line="90" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Api.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Core/Libs/Api.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1171">
-              <caret line="62" column="10" selection-start-line="62" selection-start-column="10" selection-end-line="62" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UploadFile.class.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UploadFile.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Core/Libs/UploadFile.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+            <state relative-caret-position="251">
+              <caret line="79" column="53" selection-start-line="79" selection-start-column="53" selection-end-line="79" selection-end-column="53" />
               <folding>
                 <element signature="e#6#87#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Template.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Core/Libs/Template.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="237">
-              <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Common.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Core/Common/Common.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="53" column="33" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
-              <folding>
-                <marker date="1484269017613" expanded="true" signature="207:263" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Route.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Core/Libs/Route.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-784">
-              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Model.class.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Core/Libs/Model.class.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="196" column="21" selection-start-line="196" selection-start-column="21" selection-end-line="196" selection-end-column="21" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -186,7 +82,6 @@
         <option value="$PROJECT_DIR$/Core/Common/Config/Config.php" />
         <option value="$PROJECT_DIR$/Core/Common/Common.php" />
         <option value="$PROJECT_DIR$/Core/Libs/drive/log/MysqlLog.class.php" />
-        <option value="$PROJECT_DIR$/Core/Libs/UploadFile.class.php" />
         <option value="$PROJECT_DIR$/Core/Libs/drive/log/FileLog.class.php" />
         <option value="$PROJECT_DIR$/Core/Libs/drive/log/Log.class.php" />
         <option value="$PROJECT_DIR$/Core/Libs/Drive/Log/FileLog.class.php" />
@@ -194,6 +89,7 @@
         <option value="$PROJECT_DIR$/Core/Libs/Log.class.php" />
         <option value="$PROJECT_DIR$/Core/Libs/Model.class.php" />
         <option value="$PROJECT_DIR$/Core/Libs/BaseController.class.php" />
+        <option value="$PROJECT_DIR$/Core/Libs/UploadFile.class.php" />
       </list>
     </option>
   </component>
@@ -502,12 +398,12 @@
       <workItem from="1483695519919" duration="3310000" />
       <workItem from="1483952782500" duration="34888000" />
       <workItem from="1484126503687" duration="23764000" />
-      <workItem from="1484212965707" duration="7778000" />
+      <workItem from="1484212965707" duration="8883000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94486000" />
+    <option name="totallyTimeSpent" value="95591000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1600" height="870" extended-state="0" />
@@ -807,16 +703,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Core/Libs/UploadFile.class.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding>
-            <element signature="e#6#87#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Core/Libs/Template.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="237">
@@ -827,7 +713,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Core/Libs/Route.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-784">
+        <state relative-caret-position="-770">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding />
         </state>
@@ -885,10 +771,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Core/Common/Common.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
+        <state relative-caret-position="-1230">
           <caret line="53" column="33" selection-start-line="53" selection-start-column="33" selection-end-line="53" selection-end-column="33" />
           <folding>
             <marker date="1484269017613" expanded="true" signature="207:263" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Core/Libs/UploadFile.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="79" column="53" selection-start-line="79" selection-start-column="53" selection-end-line="79" selection-end-column="53" />
+          <folding>
+            <element signature="e#6#87#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
