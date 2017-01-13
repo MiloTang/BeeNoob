@@ -118,7 +118,6 @@ class UploadFile
             } else {
                 if (@move_uploaded_file($fileInfo['tmp_name'], $dir . '/' . $filename)) {
                     self::$_filename = WEB_NAME . '/Public/Upload/' . $type . '/' . $filename;
-                    GetError($fileInfo['name'].'上传成功');
                     return true;
                 } else {
                     GetError($fileInfo['name'].'上传失败');

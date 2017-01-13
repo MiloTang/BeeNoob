@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="280edb68-da25-44bc-83a2-4084e516bc2d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/Controller/IndexController.class.php" afterPath="$PROJECT_DIR$/App/Controller/IndexController.class.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/View/Cache/PHP/eacf331f0ffc35d4b482f1d15a887d3b.php" afterPath="$PROJECT_DIR$/App/View/Cache/PHP/eacf331f0ffc35d4b482f1d15a887d3b.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/App/View/Templates/index.html" afterPath="$PROJECT_DIR$/App/View/Templates/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Core/Libs/UploadFile.class.php" afterPath="$PROJECT_DIR$/Core/Libs/UploadFile.class.php" />
     </list>
     <ignored path="Onnoob.iws" />
@@ -31,8 +27,8 @@
       <file leaf-file-name="UploadFile.class.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Core/Libs/UploadFile.class.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-138">
-              <caret line="117" column="20" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="20" />
+            <state relative-caret-position="322">
+              <caret line="119" column="94" selection-start-line="119" selection-start-column="94" selection-end-line="119" selection-end-column="94" />
               <folding>
                 <element signature="e#6#87#0#PHP" expanded="true" />
               </folding>
@@ -567,12 +563,12 @@
       <workItem from="1483695519919" duration="3310000" />
       <workItem from="1483952782500" duration="34888000" />
       <workItem from="1484126503687" duration="23764000" />
-      <workItem from="1484212965707" duration="33176000" />
+      <workItem from="1484212965707" duration="33202000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119884000" />
+    <option name="totallyTimeSpent" value="119910000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1600" height="870" extended-state="0" />
@@ -945,8 +941,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Core/Libs/UploadFile.class.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-138">
-          <caret line="117" column="20" selection-start-line="117" selection-start-column="20" selection-end-line="117" selection-end-column="20" />
+        <state relative-caret-position="322">
+          <caret line="119" column="94" selection-start-line="119" selection-start-column="94" selection-end-line="119" selection-end-column="94" />
           <folding>
             <element signature="e#6#87#0#PHP" expanded="true" />
           </folding>
