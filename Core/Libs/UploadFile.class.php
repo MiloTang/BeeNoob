@@ -63,7 +63,6 @@ class UploadFile
                 }
                 $bin = fread($file, 15);
                 fclose($file);
-                PrintFm(array_shift(unpack('H*', $bin)));
                 $real = false;
                 $realType = '';
                 foreach (self::_realTypeList() as $v) {
