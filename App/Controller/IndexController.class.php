@@ -10,6 +10,7 @@ class IndexController extends BaseController
       $this->assign('token',SetToken());
       $this->display('index.html');
    }
+
    public function upload()
    {
       $up=UploadFile::getInstance();
@@ -17,7 +18,7 @@ class IndexController extends BaseController
       {
          echo $up->getFilename();
       }
-
-
    }
+
+
 }
