@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: milo
- * Date: 11/4/2016
- * Time: 4:03 PM
- */
 namespace Core\Libs;
 defined('CORE_PATH') or exit();
 class VerifyCode {

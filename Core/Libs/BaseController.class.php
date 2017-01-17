@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: francis and winnie
- * Date: 2016/11/3
- * Time: 22:45
- */
 namespace Core\libs;
 defined('CORE_PATH') or exit();
 class BaseController

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Milo
- * Date: 10/28/2016
- * Time: 10:18 AM
- */
 namespace Core\Libs;
 defined('CORE_PATH') or exit();
 

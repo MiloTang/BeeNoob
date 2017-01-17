@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: milo
- * Date: 1/11/2017
- * Time: 9:10 AM
- */
 namespace Core\Libs;
 class UploadFile
 {

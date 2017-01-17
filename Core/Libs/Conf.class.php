@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: milo
- * Date: 11/1/2016
- * Time: 5:27 PM
- */
 namespace Core\libs;
 defined('CORE_PATH') or exit();
 class Conf

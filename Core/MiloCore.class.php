@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Milo
- * Date: 2016/11/12
- * Time: 20:39
- */
 namespace Core;
 use Core\Libs\Route;
 class MiloCore
@@ -59,6 +53,7 @@ class MiloCore
     {
         self::_init();
         self::_autoload();
+        self::_loadVendor();
         $route = Route::getInstance();
         $control=$route->getControl();
         $action=$route->getAction();
@@ -79,6 +74,13 @@ class MiloCore
         else
         {
             GetError($control.' 控制器不存在');
+        }
+    }
+    private static function _loadVendor()
+    {
+        if (file_exists('Vendor/autoload.php'))
+        {
+            require_once "Vendor/autoload.php";
         }
     }
     private static function _autoload()

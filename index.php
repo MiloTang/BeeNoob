@@ -1,9 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Milo
- * Date: 2016/11/12
- * Time: 20:26
  * 数据库处理加强
  * 内存数据库的处理
  * Ｎｏｓｑｌ数据库的处理
