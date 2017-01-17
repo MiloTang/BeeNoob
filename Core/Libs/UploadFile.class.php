@@ -180,7 +180,7 @@ class UploadFile
             mkdir($dir, 0777, true);
         }
         $filename = md5(uniqid(microtime(true), true)) . '.' . $this->ext;
-        if (@move_uploaded_file($this->fileInfo['tmp_name'],$dir.'/'.$filename)) {
+        if (move_uploaded_file($this->fileInfo['tmp_name'],$dir.'/'.$filename)) {
             self::$filename[$filename] = WEB_NAME.'/Public/Upload/'.$this->allowedType.'/'.$filename;
             $this->msg=$this->fileInfo['name'].'上传成功';
         } else {
