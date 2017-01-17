@@ -14,9 +14,8 @@
 <body>
 <div style="text-align: center">
 <form action="/index/upload/" method="post" enctype="multipart/form-data">
-    <input type="file" name="file1"><br/>
-    <input type="file" name="file2"><br/>
-    <input type="file" name="file3"><br/>
+    <input type="file" name="file1" ><br/>
+    <input type="file" name="file[]" multiple="multiple"><br/>
     <input type="hidden" name="token" value=<?php echo $token; ?>>
     <input type="submit" value="submit">
 </form>

@@ -16,17 +16,14 @@ class IndexController extends BaseController
       if(CheckToken())
       {
          $up=UploadFile::getInstance();
-         if ($up->uploads())
+         if ($up->uploads('Text'))
          {
-            echo $up->getFilename();
+            var_dump($up->getFileName());
          }
       }
       else
       {
          GetError('请勿重复提交');
       }
-
    }
-
-
 }
