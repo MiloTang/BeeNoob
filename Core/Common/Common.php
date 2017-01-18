@@ -129,3 +129,25 @@ function CheckToken()
     }
     return false;
 }
+function NumOfArray($arrays)
+{
+    $num=0;
+    if(!is_array($arrays))
+    {
+        return 0;
+    }
+    {
+        foreach ($arrays as $array)
+        {
+            if(is_array($array))
+            {
+                $t=NumOfArray($array);
+                if ($t>$num)
+                {
+                    $num=$t;
+                }
+            }
+        }
+        return $num+1;
+    }
+}

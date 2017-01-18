@@ -1,14 +1,22 @@
 <?php
 namespace App\Controller;
 use Core\Libs\BaseController;
+use Core\libs\Model;
 use Core\Libs\UploadFile;
 
 class IndexController extends BaseController
 {
    public function index()
    {
-
-      //  $this->assign('token',SetToken());
+      $model=Model::getInstance();
+      $arr=array(
+          array('uname'=>'阿一','usex'=>'男','udate'=>date('Y-m-d h:s:m')),
+          array('uname'=>'阿二','usex'=>'男','udate'=>date('Y-m-d h:s:m')),
+          array('uname'=>'阿五','usex'=>'男','udate'=>date('Y-m-d h:s:m'))
+      );
+      $model->insert('user',$arr)->lastId();
+      $model->close();
+      //$this->assign('token',SetToken());
     //   $this->display('index.html');
    }
 
