@@ -9,14 +9,23 @@ class IndexController extends BaseController
 {
    public function index()
    {
-
-
-      $model=Model::getInstance();
-      $log=Log::getInstance();
-      $log->log('测试','mysql','error_log');
+      $redis = new \Redis();
+      $redis->connect('127.0.0.1', 6379);
+      $arr=array(2,3,'4');
+     // $redis->lpush("tutorial-list", $arr);
+      // 获取存储的数据并输出
+    //  $arList = $redis->keys('tutorial-name');
+     // $arList = $redis->hMset('sql', $arr);
 
       //$this->assign('token',SetToken());
-       $this->display('index.html');
+     //  $this->display('index.html');
+      $rst=Model::getInstance()->select('user')->fetchAll();
+
+      $memcached = new \Memcached();
+      $memcached->addServer('127.0.0.1',11211);
+      PrintFm($redis->getKeys('mysql')[0]);
+
+
    }
 
    public function upload()

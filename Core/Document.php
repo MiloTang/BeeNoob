@@ -28,5 +28,10 @@
  *Monolog  日志
  *whoops 报错
  * KindEditor 富文本编辑器(暂停更新) ueditor CKEditor　TinyMCE
+ * phpoffice/phpexcel office处理
+ * phpunit/phpunit　单元测试
+ *  qrcode　二维马
+ * nette/mail　phpmailer/phpmailer　邮件
+ * predis/predis　
  *
  */

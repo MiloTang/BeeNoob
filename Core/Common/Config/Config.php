@@ -21,7 +21,8 @@ return array(
             'port'=>'3306'
         ),
         'Redis'=>array(
-
+            'ip'=>'127.0.0.1',
+            'port'=>'6379'
         ),
         'Mongodb'=>array(
 

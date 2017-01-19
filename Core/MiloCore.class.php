@@ -102,6 +102,8 @@ class MiloCore
         defined('PUBLIC') or define('PUBLIC',ROOT_DIR.'/Public/');
         defined('VENDOR') or define('VENDOR',ROOT_DIR.'/Vendor/');
         defined('EXT') or define('EXT','.class.php');
+        defined('CACHE_DB_M') or define('CACHE_DB_M',false);
+        defined('CACHE_DB_R') or define('CACHE_DB_R',false);
         defined('CACHE_PHP') or define('CACHE_PHP',false);
         defined('CACHE_HTML') or define('CACHE_HTML',false);
         defined('CACHE_TIME') or define('CACHE_TIME',200);

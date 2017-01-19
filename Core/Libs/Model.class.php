@@ -179,9 +179,50 @@ class Model
     }
     function fetchAll()
     {
-        if ($this->execute())
+        if (CACHE_DB_M)
         {
-            return $this->_stmt->fetchAll();
+            $cache=MemCachedCache::getInstance();
+            $cacheData=$cache->getCache($this->_sql);
+            if ($cacheData==null)
+            {
+                $data=array();
+                if ($this->execute())
+                {
+                    $data=$this->_stmt->fetchAll();
+                }
+                $cache->setCache($this->_sql,$data);
+                return $data;
+            }
+            else
+            {
+                return $cacheData;
+            }
+        }
+        elseif(CACHE_DB_R)
+        {
+            $cache=RedisCache::getInstance();
+            $cacheData=$cache->getCache($this->_sql);
+            if ($cacheData==null)
+            {
+                $data=array();
+                if ($this->execute())
+                {
+                    $data=$this->_stmt->fetchAll();
+                }
+                $cache->setCache($this->_sql,$data);
+                return $data;
+            }
+            else
+            {
+                return $cacheData;
+            }
+        }
+        else
+        {
+            if ($this->execute())
+            {
+               return $this->_stmt->fetchAll();
+            }
         }
         return null;
     }
