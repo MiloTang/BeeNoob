@@ -81,9 +81,9 @@ function CreateEmptyIndexHtml(string $dir=null)
     {
         if ($it->hasChildren()&&substr($it->getFilename(),0,1)!='.')
         {
-            if (!file_exists($it->getRealPath().'/index.html'))
+            if (!file_exists($it->getRealPath().'/demo.html'))
             {
-                file_put_contents($it->getRealPath().'/index.html','');
+                file_put_contents($it->getRealPath().'/demo.html','');
             }
             CreateEmptyIndexHtml($it->getRealPath());
         }

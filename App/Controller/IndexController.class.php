@@ -8,16 +8,12 @@ class IndexController extends BaseController
 {
    public function index()
    {
+
+
       $model=Model::getInstance();
-      $arr=array(
-          array('uname'=>'阿一','usex'=>'男','udate'=>date('Y-m-d h:s:m')),
-          array('uname'=>'阿二','usex'=>'男','udate'=>date('Y-m-d h:s:m')),
-          array('uname'=>'阿五','usex'=>'男','udate'=>date('Y-m-d h:s:m'))
-      );
-      echo $model->delete('user')->where('uid=:uid',array(':uid'=>'72'))->affectedRows();
-      $model->close();
+
       //$this->assign('token',SetToken());
-    //   $this->display('index.html');
+       $this->display('index.html');
    }
 
    public function upload()

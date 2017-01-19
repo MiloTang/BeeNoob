@@ -32,7 +32,7 @@ class MiloCore
             mkdir(WEB_PATH.'/View'.'/Cache/PHP/', 0777, true);
             mkdir(WEB_PATH.'/View'.'/Cache/HTML/', 0777, true);
             mkdir(WEB_PATH.'/View'.'/Templates', 0777, true);
-            file_put_contents(WEB_PATH.'/View'.'/Templates'.'/'.'index.html',file_get_contents(CORE_PATH.'/'.'index.html'));
+            file_put_contents(WEB_PATH.'/View'.'/Templates'.'/'.'demo.html',file_get_contents(CORE_PATH.'/'.'demo.html'));
             mkdir(WEB_PATH.'/Controller', 0777, true);
             mkdir(WEB_PATH.'/Public/Upload/Image', 0777, true);
             mkdir(WEB_PATH.'/Public/Upload/Text', 0777, true);
@@ -41,7 +41,7 @@ class MiloCore
             mkdir(WEB_PATH.'/Public/Static/Images', 0777, true);
             $string='<?php'.PHP_EOL.'namespace '.WEB_NAME.'\\Controller;'.PHP_EOL.'use Core\Libs\BaseController;'.PHP_EOL
             .'class IndexController extends BaseController'.PHP_EOL.'{'.PHP_EOL.'   public function index()'.PHP_EOL.
-            '   {'.PHP_EOL.'      $this->display(\'index.html\');'.PHP_EOL.'   }'.PHP_EOL.'}';
+            '   {'.PHP_EOL.'      $this->display(\'demo.html\');'.PHP_EOL.'   }'.PHP_EOL.'}';
             file_put_contents(WEB_PATH.'Controller'.'/'.'IndexController.class.php',$string);
             mkdir(WEB_PATH.'Common', 0777, true);
             mkdir(WEB_PATH.'Common'.'/Config', 0777, true);

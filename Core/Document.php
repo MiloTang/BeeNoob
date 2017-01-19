@@ -24,6 +24,9 @@
 
 /**
  *扩展
- *
+ *phpSimpleHtmlDom ，QueryList采集
+ *Monolog  日志
+ *whoops 报错
+ * KindEditor 富文本编辑器(暂停更新) ueditor CKEditor　TinyMCE
  *
  */
