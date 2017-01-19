@@ -22,20 +22,21 @@ class Log
     {
 
     }
-    public static function log($message,string $type='file',string $name='Log')
+    public static function log(string $message,string $name='error_log')
     {
-        if ($type=='file')
+        $type=isset(Conf::getInstance()->conf()['LOG'])?Conf::getInstance()->conf()['LOG']:'file';
+        if (strtolower($type)=='file')
         {
             self::$_class=FileLog::getInstance();
         }
-        elseif($type='Mysql')
+        elseif(strtolower($type)=='mysql')
         {
             self::$_class=MysqlLog::getInstance();
         }
         else
         {
-            GetError('不支持'.$type.'类log');
+            exit('不支持'.$type.'类型log');
         }
-        self::$_class->log($message,$name);
+        self::$_class->log($message,strtolower($name));
     }
 }

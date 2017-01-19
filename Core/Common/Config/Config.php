@@ -10,6 +10,7 @@ return array(
     'API'=>array(
         'type'=>'json'
     ),
+    'LOG'=>'file',
     'DB'=>array(
         'Mysql'=>array(
             'dsn'=>'mysql:host=localhost;',
@@ -33,7 +34,6 @@ return array(
         ),
     ),
     'SLD'=>array(
-
     ),
     'UP_TYPE'=>array(
        'type'=>array(

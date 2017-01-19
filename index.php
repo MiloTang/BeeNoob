@@ -16,7 +16,7 @@
     "predis/predis": "*"
  */
 define('APP_NAME','App');
-define('DEBUG',true);
+define('DEBUG',false);
 define('URL_SECRET',false);
 require ('./Core/MiloCore.class.php');
 \Core\MiloCore::run();

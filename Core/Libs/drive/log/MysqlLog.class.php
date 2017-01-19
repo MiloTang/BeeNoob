@@ -28,14 +28,19 @@ class MysqlLog implements Log
     public function log($message,$name)
     {
         $model=Model::getInstance();
-        if($model->checkTable(date('Y-m-d').'log'))
+        $sql='create table'.' IF NOT EXISTS log (log_id INT NOT NULL AUTO_INCREMENT,log_name VARCHAR(30) NOT NULL,log_msg VARCHAR(500) NOT NULL,PRIMARY KEY ( log_id ));';
+        $model->doSql($sql);
+        $totalTime=microtime(true)-$GLOBALS['StartTime'];
+        if(MEMORY_LIMIT_ON)
         {
-
+            $totalMemory=memory_get_usage()-$GLOBALS['StartUseMemory'];
         }
         else
         {
-
+            $totalMemory=0;
         }
-
+        $str=date('Y-m-d H:i:s') .' 耗时: '.$totalTime.' 耗内存: '.$totalMemory.'  '.$message;
+        $fields=array('log_name'=>$name,'log_msg'=>$str);
+        $model->insert('log',$fields)->lastId();
     }
 }

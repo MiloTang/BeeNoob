@@ -116,7 +116,7 @@ class Model
      * @param $field
      * @return bool
      */
-    public function fieldsCheck($table,$field):bool
+    public function checkField($table,$field):bool
     {
         $rst = $this->_pdo->query("desc $table")->fetchAll();
         foreach ($rst as $keys => $values)
@@ -126,7 +126,6 @@ class Model
                 return true;
                 break;
             }
-            echo $values['Field'];
         }
         return false;
     }
