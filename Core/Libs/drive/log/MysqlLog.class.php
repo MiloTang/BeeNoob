@@ -6,6 +6,8 @@
  * Time: 6:33 PM
  */
 namespace Core\libs\Drive\Log;
+use Core\libs\Model;
+
 class MysqlLog implements Log
 {
     private static $_instance;
@@ -25,6 +27,15 @@ class MysqlLog implements Log
     }
     public function log($message,$name)
     {
+        $model=Model::getInstance();
+        if($model->checkTable(date('Y-m-d').'log'))
+        {
+
+        }
+        else
+        {
+
+        }
 
     }
 }

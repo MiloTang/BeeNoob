@@ -98,7 +98,7 @@ class Model
      * @param $table
      * @return bool
      */
-    public function tableCheck($table):bool
+    public function checkTable($table):bool
     {
         $rst = $this->_pdo->query('show tables')->fetchAll();
         foreach ($rst as $keys => $values)
