@@ -1,5 +1,6 @@
 <?php
 namespace Core\Libs;
+defined('CORE_PATH') or exit();
 class ImageWatermark implements Image
 {
     protected $path;

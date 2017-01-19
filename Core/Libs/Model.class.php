@@ -10,7 +10,7 @@ class Model
     private $_charset;
     private $_dbName;
     private static $_instance;
-    protected $pdo;
+    private $_pdo;
     private $_dbConf;
     private $_sql;
     private $_params;
@@ -22,7 +22,7 @@ class Model
     private function __construct()
     {
         $this->_initDBCConf();
-        $this->pdo=$this->_link();
+        $this->_pdo=$this->_link();
         $this->_setCharset();
         $this->_selectDB();
     }
@@ -42,14 +42,14 @@ class Model
         try
         {
             $this->_dsn = $this->_dsn.$this->_port;
-            $this->pdo = new \PDO($this->_dsn,$this->_username, $this->_password);
-            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            $this->pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
-            $this->pdo->setAttribute(\PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,true);
+            $this->_pdo = new \PDO($this->_dsn,$this->_username, $this->_password);
+            $this->_pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            $this->_pdo->setAttribute(\PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC);
+            $this->_pdo->setAttribute(\PDO::MYSQL_ATTR_USE_BUFFERED_QUERY,true);
         } catch (\PDOException $e) {
                GetError($e->getMessage());
         }
-        return $this->pdo;
+        return $this->_pdo;
     }
     static public function getInstance()
     {
@@ -62,13 +62,13 @@ class Model
     private function _setCharset()
     {
         $sql = 'SET NAMES '.$this->_charset;
-        $this->pdo->query($sql);
+        $this->_pdo->query($sql);
     }
 
     private function _selectDB()
     {
         $sql = 'USE '.$this->_dbName;
-        $this->pdo->query($sql);
+        $this->_pdo->query($sql);
     }
     /**
      * @param $sql
@@ -84,7 +84,7 @@ class Model
         }
         try
         {
-            $stmt = $this->pdo->prepare($sql);
+            $stmt = $this->_pdo->prepare($sql);
             $stmt->execute($bindParams);
             return $stmt;
         }
@@ -100,7 +100,7 @@ class Model
      */
     public function tableCheck($table):bool
     {
-        $rst = $this->pdo->query('show tables')->fetchAll();
+        $rst = $this->_pdo->query('show tables')->fetchAll();
         foreach ($rst as $keys => $values)
         {
              if ($table==$values["Tables_in_.$this->_dbName"])
@@ -118,7 +118,7 @@ class Model
      */
     public function fieldsCheck($table,$field):bool
     {
-        $rst = $this->pdo->query("desc $table")->fetchAll();
+        $rst = $this->_pdo->query("desc $table")->fetchAll();
         foreach ($rst as $keys => $values)
         {
             if ($field==$values['Field'])
@@ -134,7 +134,7 @@ class Model
     public function counts($table) : int
     {
         $sql=''.'select count(*) from '.$table;
-        $rowCount=$this->pdo->query($sql)->fetchColumn();
+        $rowCount=$this->_pdo->query($sql)->fetchColumn();
         return $rowCount;
     }
 
@@ -168,7 +168,7 @@ class Model
     {
         try
         {
-            $stmt = $this->pdo->prepare($this->_sql);
+            $stmt = $this->_pdo->prepare($this->_sql);
             $stmt->execute($this->_params);
             $this->_stmt=$stmt;
         }
@@ -245,7 +245,7 @@ class Model
     {
         if ($this->execute())
         {
-            return $this->pdo->lastInsertId();
+            return $this->_pdo->lastInsertId();
         }
         else
         {
@@ -284,17 +284,17 @@ class Model
     }
     public function startTrans()
     {
-        $this->pdo->beginTransaction();
+        $this->_pdo->beginTransaction();
     }
     public function commitTrans()
     {
-        $this->pdo->commit();
+        $this->_pdo->commit();
     }
 
     public function inTrans($sql,$bindParams)
     {
 
-        if ($this->pdo->inTransaction())
+        if ($this->_pdo->inTransaction())
         {
             $this->doSql($sql,$bindParams,$debug=false);
         }
@@ -305,7 +305,7 @@ class Model
     }
     public function rollBackTrans()
     {
-        $this->pdo->rollBack();
+        $this->_pdo->rollBack();
     }
     public function debug()
     {
@@ -313,7 +313,7 @@ class Model
     }
     public function close()
     {
-        $this->pdo = null;
+        $this->_pdo = null;
     }
 
 }

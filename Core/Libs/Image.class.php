@@ -1,5 +1,6 @@
 <?php
 namespace Core\Libs;
+defined('CORE_PATH') or exit();
 interface Image
 {
     public function openImage($src);

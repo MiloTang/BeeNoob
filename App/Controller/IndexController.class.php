@@ -14,7 +14,7 @@ class IndexController extends BaseController
           array('uname'=>'阿二','usex'=>'男','udate'=>date('Y-m-d h:s:m')),
           array('uname'=>'阿五','usex'=>'男','udate'=>date('Y-m-d h:s:m'))
       );
-      $model->insert('user',$arr)->lastId();
+      echo $model->delete('user')->where('uid=:uid',array(':uid'=>'72'))->affectedRows();
       $model->close();
       //$this->assign('token',SetToken());
     //   $this->display('index.html');
