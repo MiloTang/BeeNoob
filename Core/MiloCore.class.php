@@ -32,7 +32,7 @@ class MiloCore
             mkdir(WEB_PATH.'/View'.'/Cache/PHP/', 0777, true);
             mkdir(WEB_PATH.'/View'.'/Cache/HTML/', 0777, true);
             mkdir(WEB_PATH.'/View'.'/Templates', 0777, true);
-            file_put_contents(WEB_PATH.'/View'.'/Templates'.'/'.'demo.html',file_get_contents(CORE_PATH.'/'.'demo.html'));
+            file_put_contents(WEB_PATH.'/View'.'/Templates'.'/'.'index.html',file_get_contents(CORE_PATH.'/'.'index.html'));
             mkdir(WEB_PATH.'/Controller', 0777, true);
             mkdir(WEB_PATH.'/Public/Upload/Image', 0777, true);
             mkdir(WEB_PATH.'/Public/Upload/Text', 0777, true);
