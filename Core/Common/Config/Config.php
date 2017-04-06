@@ -14,9 +14,9 @@ return array(
     'DB'=>array(
         'Mysql'=>array(
             'dsn'=>'mysql:host=localhost;',
-            'dbName'=>'milo',
+            'dbName'=>'test',
             'username'=>'root',
-            'password'=>'milo2007',
+            'password'=>'',
             'charset'=>'utf8',
             'port'=>'3306'
         ),
